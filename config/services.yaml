@@ -29,3 +29,18 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    #Sonata admins
+    admin.article:
+        class: App\Admin\ArticleAdmin
+        arguments: [~, App\Entity\Article, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Article }
+        public: true
+
+    admin.post:
+        class: App\Admin\PostAdmin
+        arguments: [~, App\Entity\Post, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Post }
+        public: true

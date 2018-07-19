@@ -1,6 +1,21 @@
 # This file is the entry point to configure your own HTTP routes.
 # Files in the routes/ subdirectory configure the routes for your dependencies.
+sonata_user_admin_security:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
 
+sonata_user_admin_resetting:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    prefix: /admin/resetting
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+controllers:
+    resource: '../src/Controller/'
+    type:     annotation
 #index:
 #    path: /
-#    defaults: { _controller: 'App\Controller\DefaultController::index' }
+#    defaults: { _controller: 'App\Controller\HomeController::home' }
