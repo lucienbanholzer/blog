@@ -24,10 +24,10 @@
                     <article class="box">
                         <header>
                             <h2>{{ post.title }}</h2>
-                            <p>01.01.2017</p>
+                            <p>{{ post.date|date('Y-m-d') }}</p>
                         </header>
                         <div class="content">
-                            <p>{{ post.intro }}</p>
+                            <p>{{ post.content|raw }}</p>
                         </div>
                         <footer>
                             <a href="{{ path('post',{'id': post.id }) }}" class="button alt">En voir plus</a>

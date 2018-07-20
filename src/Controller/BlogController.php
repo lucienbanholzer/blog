@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\PracticalInfos;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -48,6 +49,11 @@ class BlogController extends AbstractController
      */
     public function infos()
     {
-        return $this->render('infos.html.twig', []);
+        $practicalInfos = $this->getDoctrine()
+            ->getRepository(PracticalInfos::class)->findAll()[0];
+
+        return $this->render('infos.html.twig', [
+            'practicalInfos' => $practicalInfos
+        ]);
     }
 }

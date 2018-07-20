@@ -6,6 +6,8 @@ sonata_user:
         group: App\Application\Sonata\UserBundle\Entity\Group
 
 sonata_admin:
+    templates:
+        layout: 'override_standard_layout.html.twig'
     security:
         handler: sonata.admin.security.handler.role
         role_admin: ROLE_ADMIN

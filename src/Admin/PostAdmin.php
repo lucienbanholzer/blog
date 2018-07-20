@@ -21,8 +21,8 @@ class PostAdmin extends AbstractAdmin
     {
         $formMapper->add('title', TextType::class);
         $formMapper->add('subtitle', TextType::class);
-        $formMapper->add('intro', TextType::class);
-        $formMapper->add('content', TextareaType::class);
+        $formMapper->add('intro', TextareaType::class,["attr" => ["class" => "js-tinymce"] ]);
+        $formMapper->add('content', TextareaType::class,["attr" => ["class" => "js-tinymce"] ]);
         $formMapper->add('url', TextType::class);
     }
 

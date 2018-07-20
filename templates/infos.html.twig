@@ -14,11 +14,14 @@
 		<div class="inner">
 			<article class="box">
 				<header>
-					<h2>kjxksd</h2>
-					<p>01.01.2017</p>
+					<h2>{{ practicalInfos.title }}</h2>
+					<p>{{ practicalInfos.date|date('Y-m-d') }}</p>
 				</header>
 				<div class="content">
-					jksdjhf
+                    {{ practicalInfos.intro|raw }}
+				</div>
+				<div class="content">
+                    {{ practicalInfos.content|raw }}
 				</div>
 			</article>
 		</div>

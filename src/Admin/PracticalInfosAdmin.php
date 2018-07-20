@@ -12,6 +12,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PracticalInfosAdmin extends AbstractAdmin
@@ -20,8 +21,8 @@ class PracticalInfosAdmin extends AbstractAdmin
     {
         $formMapper->add('title', TextType::class);
         $formMapper->add('subtitle', TextType::class);
-        $formMapper->add('intro', TextType::class);
-        $formMapper->add('content', TextType::class);
+        $formMapper->add('intro', TextAreaType::class,["attr" => ["class" => "js-tinymce"] ]);
+        $formMapper->add('content', TextareaType::class,["attr" => ["class" => "js-tinymce"] ]);
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)

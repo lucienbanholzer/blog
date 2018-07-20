@@ -15,17 +15,20 @@
 			<article class="box">
 				<header>
 					<h2>{{ post.title }}</h2>
-					<p>01.01.2017</p>
+					<p>{{ post.date|date('Y-m-d') }}</p>
 				</header>
 				<div class="content">
-					{{ post.content }}
+                    {{ post.intro|raw }}
 				</div>
-				<footer>
+				<div class="content">
+					{{ post.content|raw }}
+				</div>
+				{#<footer>
 					<ul class="actions">
 						<li><a href="#" class="button alt icon fa-chevron-left"><span class="label">Previous</span></a></li>
 						<li><a href="#" class="button alt icon fa-chevron-right"><span class="label">Next</span></a></li>
 					</ul>
-				</footer>
+				</footer>#}
 			</article>
 		</div>
 	</section>
