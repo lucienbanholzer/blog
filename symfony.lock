@@ -242,9 +242,6 @@
     "symfony/intl": {
         "version": "v3.4.12"
     },
-    "symfony/lts": {
-        "version": "v3"
-    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -259,9 +256,6 @@
     },
     "symfony/orm-pack": {
         "version": "v1.0.5"
-    },
-    "symfony/polyfill-apcu": {
-        "version": "v1.8.0"
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.8.0"

@@ -31,16 +31,16 @@ services:
     # please note that last definitions always *replace* previous ones
 
     #Sonata admins
-    admin.article:
-        class: App\Admin\ArticleAdmin
-        arguments: [~, App\Entity\Article, ~]
+    admin.practical_infos:
+        class: App\Admin\PracticalInfosAdmin
+        arguments: [~, App\Entity\PracticalInfos, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Article }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Infos pratiques }
         public: true
 
     admin.post:
         class: App\Admin\PostAdmin
         arguments: [~, App\Entity\Post, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Post }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Post }
         public: true

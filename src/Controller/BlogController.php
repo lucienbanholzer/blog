@@ -19,14 +19,27 @@ class BlogController extends AbstractController
  */
     public function blog()
     {
-        /*$posts = $this->getDoctrine()
+        $posts = $this->getDoctrine()
             ->getRepository(Post::class)
-            ->findLatest();*/
-
-        $posts = array();
+            ->findAll();
 
         return $this->render('blog.html.twig', [
             'posts' => $posts,
+        ]);
+    }
+
+    /**
+     * @Route("/blog/{id}", name="post")
+     */
+    public function post($id)
+    {
+        $post = $this->getDoctrine()
+            ->getRepository(Post::class)
+            ->find($id);
+
+
+        return $this->render('post.html.twig', [
+            'post' => $post,
         ]);
     }
 
@@ -35,14 +48,6 @@ class BlogController extends AbstractController
      */
     public function infos()
     {
-        /*$posts = $this->getDoctrine()
-            ->getRepository(Post::class)
-            ->findLatest();*/
-
-        $posts = array();
-
-        return $this->render('infos.html.twig', [
-            'posts' => $posts,
-        ]);
+        return $this->render('infos.html.twig', []);
     }
 }

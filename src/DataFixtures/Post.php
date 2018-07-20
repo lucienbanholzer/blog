@@ -15,6 +15,7 @@ class Post extends Fixture
         $post->setTitle("test post 1");
         $post->setSubtitle("test subtitle post 2");
         $post->setUrl("tets url");
+        $post->setDate(new \DateTime());
         $manager->persist($post);
 
         $post = new \App\Entity\Post();
@@ -23,6 +24,7 @@ class Post extends Fixture
         $post->setTitle("test post 2");
         $post->setSubtitle("test subtitle post 2");
         $post->setUrl("tets url");
+        $post->setDate(new \DateTime());
         $manager->persist($post);
 
         $manager->flush();
