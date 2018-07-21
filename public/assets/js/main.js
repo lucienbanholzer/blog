@@ -1,5 +1,5 @@
 /*
-	Road Trip by TEMPLATED
+	Transitive by TEMPLATED
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 */
@@ -21,8 +21,6 @@
 			$header = $('#header'),
 			$banner = $('#banner');
 
-		var $height = $('#header').height();
-
 		// Disable animations/transitions until the page has loaded.
 			$body.addClass('is-loading');
 
@@ -32,9 +30,6 @@
 				}, 100);
 			});
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
-
 		// Prioritize "important" elements on medium.
 			skel.on('+medium -medium', function() {
 				$.prioritize(
@@ -43,23 +38,71 @@
 				);
 			});
 
-		// Banner
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
+
+		// Header.
+			if (skel.vars.IEVersion < 9)
+				$header.removeClass('alt');
+
+			if ($banner.length > 0
+			&&	$header.hasClass('alt')) {
+
+				$window.on('resize', function() { $window.trigger('scroll'); });
+
+				$banner.scrollex({
+					bottom:		$header.outerHeight(),
+					terminate:	function() { $header.removeClass('alt'); },
+					enter:		function() { $header.addClass('alt'); },
+					leave:		function() { $header.removeClass('alt'); $header.addClass('reveal'); }
+				});
+
+			}
+
+		// Banner.
 
 			if ($banner.length > 0) {
 
-				// IE: Height fix.
-					if (skel.vars.browser == 'ie'
-					&&	skel.vars.IEVersion > 9) {
+				// IE fix.
+					if (skel.vars.IEVersion < 12) {
 
-						skel.on('-small !small', function() {
-							$banner.css('height', '100vh');
+						$window.on('resize', function() {
+
+							var wh = $window.height() * 0.60,
+								bh = $banner.height();
+
+							$banner.css('height', 'auto');
+
+							window.setTimeout(function() {
+
+								if (bh < wh)
+									$banner.css('height', wh + 'px');
+
+							}, 0);
+
 						});
 
-						skel.on('+small', function() {
-							$banner.css('height', '');
+						$window.on('load', function() {
+							$window.triggerHandler('resize');
 						});
 
 					}
+
+				// Video check.
+					var video = $banner.data('video');
+
+					if (video)
+						$window.on('load.banner', function() {
+
+							// Disable banner load event (so it doesn't fire again).
+								$window.off('load.banner');
+
+							// Append video if supported.
+								/*if (!skel.vars.mobile
+								&&	!skel.breakpoint('large').active
+								&&	skel.vars.IEVersion > 9)*/
+									$banner.append('<video autoplay loop><source src="' + video + '.mp4" type="video/mp4" /><source src="' + video + '.webm" type="video/webm" /></video>');
+						});
 
 				// More button.
 					$banner.find('.more')
@@ -67,46 +110,14 @@
 
 			}
 
-
-		// Get BG Image
-
-			if ( $( ".bg-img" ).length ) {
-
-				$( ".bg-img" ).each(function() {
-
-					var post 	= $(this),
-						bg 		= post.data('bg');
-
-					post.css( 'background-image', 'url(images/' + bg + ')' );
-
-				});
-
-
-			}
-
-		// Posts
-
-			$( ".post" ).each( function() {
-				var p = $(this),
-					i = p.find('.inner'),
-					m = p.find('.more');
-
-				m.addClass('scrolly');
-
-				p.scrollex({
-					top: '40vh',
-					bottom: '40vh',
-					terminate: 	function() { m.removeClass('current'); i.removeClass('current'); },
-					enter: 		function() { m.addClass('current'); i.addClass('current'); },
-					leave: 		function() { m.removeClass('current'); i.removeClass('current'); }
-				});
-
-			});
-
 		// Scrolly.
 			if ( $( ".scrolly" ).length ) {
 
-				$('.scrolly').scrolly();
+				var $height = $('#header').height() * 0.95;
+
+				$('.scrolly').scrolly({
+					offset: $height
+				});
 			}
 
 		// Menu.

@@ -5,42 +5,132 @@
 
     <!-- Banner -->
     <!--
-        Note: To show a background image, set the "data-bg" attribute below
-        to the full filename of your image. This is used in each section to set
-        the background image.
+        To use a video as your background, set data-video to the name of your video without
+        its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
+        formats to work correctly.
     -->
-    <section id="banner" class="bg-img" data-bg="two_of_us.jpg">
+    <section id="banner" data-video="images/test">
         <div class="inner">
-            <header>
-                <h1>Wedding blog</h1>
-            </header>
+            <h1>B blog</h1>
+            <p>Pas de concept. Juste notre blog.</p>
+            {#<a href="#one" class="button special scrolly">Get Started</a>#}
         </div>
-        <a href="#1" class="more">En voir plus</a>
     </section>
+
     {% if posts is defined %}
         {% for post in posts %}
-            <section id="{{ loop.index }}" class="wrapper post bg-img" data-bg="two_of_us.jpg">
+            <section id="{{ loop.index }}" class="wrapper style2">
                 <div class="inner">
-                    <article class="box">
-                        <header>
-                            <h2>{{ post.title }}</h2>
-                            <p>{{ post.date|date('Y-m-d') }}</p>
-                        </header>
-                        <div class="content">
-                            <p>{{ post.content|raw }}</p>
+                    <div>
+                        <div class="box">
+                            <div class="image fit">
+                                <img src="images/two_of_us.jpg" alt="" />
+                            </div>
+                            <div class="content">
+                                <header class="align-center">
+                                    <h2>{{ post.title }}</h2>
+                                    <p>{{ post.date|date('Y-m-d') }}</p>
+                                </header>
+                                <hr />
+                                <p>{{ post.intro|raw }}</p>
+
+                                {#<a href="{{ path('post',{'id': post.id }) }}" class="button alt">En voir plus</a>#}
+                            </div>
                         </div>
-                        <footer>
-                            <a href="{{ path('post',{'id': post.id }) }}" class="button alt">En voir plus</a>
-                        </footer>
-                    </article>
+                    </div>
                 </div>
-                {% if not loop.last %}
-                    <a href="#{{ loop.index + 1 }}" class="more">En voir plus</a>
-                {% endif %}
             </section>
 
         {% endfor %}
     {% endif %}
+
+    <!-- Two -->
+    {#<section id="two" class="wrapper style3">
+        <div class="inner">
+            <div id="flexgrid">
+                <div>
+                    <header>
+                        <h3>Tempus Feugiat</h3>
+                    </header>
+                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu</p>
+                    <ul class="actions">
+                        <li><a href="#" class="button alt">Learn More</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <header>
+                        <h3>Aliquam Nulla</h3>
+                    </header>
+                    <p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed </p>
+                    <ul class="actions">
+                        <li><a href="#" class="button alt">Learn More</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <header>
+                        <h3>Sed Magna</h3>
+                    </header>
+                    <p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula.</p>
+                    <ul class="actions">
+                        <li><a href="#" class="button alt">Learn More</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style2">
+        <div class="inner">
+            <div class="grid-style">
+
+                <div>
+                    <div class="box">
+                        <div class="image fit">
+                            <img src="images/pic02.jpg" alt="" />
+                        </div>
+                        <div class="content">
+                            <header class="align-center">
+                                <h2>Lorem ipsum dolor</h2>
+                                <p>maecenas feugiat ex purus, quis volutpat lacus placerat</p>
+                            </header>
+                            <hr />
+                            <p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="box">
+                        <div class="image fit">
+                            <img src="images/pic03.jpg" alt="" />
+                        </div>
+                        <div class="content">
+                            <header class="align-center">
+                                <h2>Vestibulum sit amet</h2>
+                                <p>mattis sapien pretium tellus venenatis</p>
+                            </header>
+                            <hr />
+                            <p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Four -->
+    <section id="four" class="wrapper style3">
+        <div class="inner">
+
+            <header class="align-center">
+                <h2>Morbi interdum mollis sapien</h2>
+                <p>Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
+            </header>
+
+        </div>
+    </section>#}
 
     <!-- Footer -->
     {% include 'footer.html.twig' %}
